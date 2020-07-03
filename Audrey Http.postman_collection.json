@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "Audrey_Get",
+			"name": "Audrey_Gett",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
