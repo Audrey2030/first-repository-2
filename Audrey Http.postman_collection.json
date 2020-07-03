@@ -1,0 +1,136 @@
+{
+	"info": {
+		"_postman_id": "3f59b090-e51f-4a28-9d13-c1c38aa07d3d",
+		"name": "Audrey Http",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Audrey_Get",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "https://httpbin.org/get?Params1=Audrey&Params2=5",
+					"protocol": "https",
+					"host": [
+						"httpbin",
+						"org"
+					],
+					"path": [
+						"get"
+					],
+					"query": [
+						{
+							"key": "Params1",
+							"value": "Audrey"
+						},
+						{
+							"key": "Params2",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Audrey_UUID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "07cb451b-2b8b-4c5d-8252-f51575a555c6",
+						"exec": [
+							"\r",
+							"var ResponsejsonData = pm.response.json();\r",
+							"pm.globals.set(\"uuid\", ResponsejsonData.uuid);\r",
+							"    \r",
+							"   \r",
+							"\r",
+							"//pm.test(\"Your test name\", function () {\r",
+							"  //  var jsonData = pm.response.json();\r",
+							"    //pm.expect(jsonData.value).to.eql(100);\r",
+							"//});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "https://httpbin.org/uuid",
+					"protocol": "https",
+					"host": [
+						"httpbin",
+						"org"
+					],
+					"path": [
+						"uuid"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Audrey_Post",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3b5bccb9-99c6-458b-b054-5923746cd2e5",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"ID\":\"{{uuid}}\",\n\t\"name\":\"Audrey\",\n\t\"email\": \"audrey@abc.com\",\n\t\"gender\":\"F\"\n}\t\n\t",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://httpbin.org/post",
+					"protocol": "https",
+					"host": [
+						"httpbin",
+						"org"
+					],
+					"path": [
+						"post"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
